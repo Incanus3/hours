@@ -1,0 +1,31 @@
+- error = @work_day.errors.key?(:date) && @work_day.errors[:date].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :date, :class => 'control-label'
+  .controls
+    =f.text_field :date, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:date, :class => 'text-error') : pat(:example)
+- error = @work_day.errors.key?(:hours) && @work_day.errors[:hours].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :hours, :class => 'control-label'
+  .controls
+    =f.text_field :hours, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:hours, :class => 'text-error') : pat(:example)
+- error = @work_day.errors.key?(:description) && @work_day.errors[:description].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :description, :class => 'control-label'
+  .controls
+    ~f.text_area :description, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
+- error = @work_day.errors.key?(:user_id) && @work_day.errors[:user_id].count > 0
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :user_id, :class => 'control-label'
+  .controls
+    =f.text_field :user_id, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:user_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:work_days, :index), :class => 'btn'

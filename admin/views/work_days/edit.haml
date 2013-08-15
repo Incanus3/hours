@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:work_days, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:work_days, :new)
+  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:work_days, :edit, :id => @work_day.id)
+
+.tabs-content
+  -form_for :work_day, url(:work_days, :update, :id => @work_day.id), :method => :put, :class => 'form-horizontal' do |f|
+    =partial 'work_days/form', :locals => { :f => f }

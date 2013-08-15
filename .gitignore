@@ -8,3 +8,4 @@ vendor/gems/*
 db/*.db
 .*.sw*
 config/database.rb
+*~
